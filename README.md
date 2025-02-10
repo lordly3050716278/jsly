@@ -10,7 +10,9 @@
 npm install jsly
 ```
 
-### 使用cdn
+### 使用 cdn
 ```html
-<script src="https://cdn.jsdelivr.net/npm/jsly@latest/dist/jsly.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsly@<version>/dist/index.umd.js"></script>
 ```
+
+其余每个模块的具体用方法请前往单独模块中查看
