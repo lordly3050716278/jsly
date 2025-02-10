@@ -1,0 +1,42 @@
+{
+  "name": "jsly",
+  "version": "2.0.0",
+  "description": "小李大人的一些常用的js工具",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordly3050716278/jsly.git"
+  },
+  "keywords": [
+    "lordly",
+    "js",
+    "utils"
+  ],
+  "author": "lordly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lordly3050716278/jsly/issues"
+  },
+  "homepage": "https://github.com/lordly3050716278/jsly#readme",
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
+  }
+}
