@@ -1,6 +1,6 @@
 {
   "name": "jsly",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "小李大人的一些常用的js工具",
   "main": "dist/index.cjs",
   "type": "module",
