@@ -1,4 +1,3 @@
-
 # high-precision-timer 模块
 
 `high-precision-timer` 是 `jsly` 库中的一个模块，提供了高精度的定时器功能，支持在浏览器和 Node.js 环境下工作。该模块通过精确的时间计算，解决了传统的 `setTimeout` 和 `setInterval` 在实际应用中存在的精度问题。它适用于需要精确定时的场景，如动画、游戏和高频率数据更新等。
@@ -39,14 +38,18 @@ import { highPrecisionTimeout, highPrecisionInterval } from 'jsly'
 
 ### 返回值
 
-该函数不返回任何值，它仅在指定的延迟后执行回调函数。
+返回一个包含 `clear` 方法的对象，用于取消定时器。调用 `clear` 方法可以立即停止定时器的执行。
 
 ### 示例
 
 ```javascript
-highPrecisionTimeout(() => {
+// 创建定时器
+const timer = highPrecisionTimeout(() => {
   console.log('高精度 setTimeout 执行')
 }, 1000)
+
+// 取消定时器
+timer.clear()
 ```
 
 ### 工作原理
@@ -72,14 +75,18 @@ highPrecisionTimeout(() => {
 
 ### 返回值
 
-该函数不返回任何值，它会在每个精确的时间间隔内执行回调函数。
+返回一个包含 `clear` 方法的对象，用于取消定时器。调用 `clear` 方法可以立即停止定时器的执行。
 
 ### 示例
 
 ```javascript
-highPrecisionInterval(() => {
+// 创建定时器
+const interval = highPrecisionInterval(() => {
   console.log('每 1000 毫秒执行一次')
 }, 1000)
+
+// 取消定时器
+interval.clear()
 ```
 
 ### 工作原理
@@ -149,17 +156,25 @@ highPrecisionInterval(() => {
 <body>
     <div id="t0"></div>
     <div id="t1"></div>
+    <button id="stop">停止定时器</button>
 </body>
 
 <script>
     let t0 = 0
-    jsly.highPrecisionInterval(() => {
+    const timer = jsly.highPrecisionInterval(() => {
         document.querySelector('#t0').textContent = t0++
     }, 1000)
+    
     let t1 = 0
-    setInterval(() => {
+    const intervalId = setInterval(() => {
         document.querySelector('#t1').textContent = t1++
     }, 1000)
+
+    // 点击按钮停止两个定时器
+    document.querySelector('#stop').addEventListener('click', () => {
+        timer.clear() // 停止高精度定时器
+        clearInterval(intervalId) // 停止传统定时器
+    })
 </script>
 
 </html>
