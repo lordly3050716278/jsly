@@ -17,7 +17,8 @@ npm install jsly
 引入后，全局对象 `Jsly` 将包含所有工具函数。
 
 ## 使用示例
-1. 防抖函数
+
+### 防抖函数
 
 ```javascript
 import { debounce } from 'jsly'
@@ -28,7 +29,7 @@ window.addEventListener('resize', handler)
 
 ```
 
-2. 节流函数
+### 节流函数
 
 ```javascript
 import { throttle } from 'jsly'
@@ -38,7 +39,7 @@ window.addEventListener('scroll', handler)
 
 ```
 
-3. SHA-256 加密
+### SHA-256 加密
 
 ```javascript
 import { sha256 } from 'jsly'
@@ -48,7 +49,7 @@ console.log(hash)
 
 ```
 
-4. UUID SHA-256 哈希
+### UUID SHA-256 哈希
 
 ```javascript
 import { randomHash } from 'jsly'
@@ -56,12 +57,24 @@ import { randomHash } from 'jsly'
 // 默认 v1 UUID
 console.log(randomHash())
 
+// v1 UUID
+console.log(randomHash('v1'))
+
+// v2 UUID
+console.log(randomHash('v2'))
+
+// v3 UUID
+console.log(randomHash('v3'))
+
 // v4 UUID
 console.log(randomHash('v4'))
 
+// v5 UUID
+console.log(randomHash('v5'))
+
 ```
 
-5. 浏览器指纹 ID
+### 浏览器指纹 ID
 
 ```javascript
 import { generateBrowserId } from 'jsly'
@@ -71,7 +84,7 @@ console.log(browserId) // 64 位 SHA-256 哈希
 
 ```
 
-6. 对象构建 FormData
+### 对象构建 FormData
 
 ```javascript
 import { buildObjFormData } from 'jsly'
@@ -87,7 +100,7 @@ console.log(formData)
 
 ```
 
-7. 剪贴板复制
+### 剪贴板复制
 
 ```javascript
 import { copyToClipboard, copyByClipboardAPI, copyByExecCommand } from 'jsly'
@@ -114,7 +127,7 @@ try {
 
 ```
 
-8. 字符串与对象命名转换
+### 字符串与对象命名转换
 
 ```javascript
 import { camelToSnake, snakeToCamel, toggleConvertCase, convertObjKeysToCamel } from 'jsly'
@@ -129,7 +142,7 @@ console.log(convertObjKeysToCamel(obj)) // { myVariable: 123, anotherKey: 'abc' 
 
 ```
 
-9. 对象差异对比
+### 对象差异对比
 
 ```javascript
 import { shallowDiff, deepDiff } from 'jsly'
@@ -148,7 +161,7 @@ console.log(deepDiff(oldObj, newObj, true)) // { a: 2, b: { y: 30 } }
 
 ```
 
-10. 事件总线
+### 事件总线
 
 ```javascript
 import { $bus } from 'jsly'
