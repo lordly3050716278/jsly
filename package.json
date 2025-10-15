@@ -1,6 +1,6 @@
 {
   "name": "jsly",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "js工具库",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

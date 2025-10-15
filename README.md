@@ -132,13 +132,25 @@ try {
 ```javascript
 import { camelToSnake, snakeToCamel, toggleConvertCase, convertKeys } from 'jsly'
 
+// 字符串转换
 console.log(camelToSnake('myVariable')) // my_variable
 console.log(snakeToCamel('my_variable')) // myVariable
 console.log(toggleConvertCase('myVariable')) // my_variable
 console.log(toggleConvertCase('my_variable')) // myVariable
 
-console.log(convertKeys({ user_name: 'Tom', user_info: { phone_number: '123' } }, 'camel')) // { userName: 'Tom', userInfo: { phoneNumber: '123' } }
-console.log(convertKeys({ userName: 'Tom', userInfo: { phoneNumber: '123' } }, 'snake')) // { userName: 'Tom', userInfo: { phoneNumber: '123' } }
+// 对象键名转换（默认只转换首层）
+console.log(convertKeys({ user_name: 'Tom', user_info: { phone_number: '123' } }, 'camel'))
+// => { userName: 'Tom', userInfo: { phone_number: '123' } }
+
+// 递归转换所有层级
+console.log(convertKeys({ user_name: 'Tom', user_info: { phone_number: '123' } }, 'camel', true))
+// => { userName: 'Tom', userInfo: { phoneNumber: '123' } }
+
+console.log(convertKeys({ userName: 'Tom', userInfo: { phoneNumber: '123' } }, 'snake'))
+// => { user_name: 'Tom', user_info: { phoneNumber: '123' } }
+
+console.log(convertKeys({ userName: 'Tom', userInfo: { phoneNumber: '123' } }, 'snake', true))
+// => { user_name: 'Tom', user_info: { phone_number: '123' } }
 
 ```
 
