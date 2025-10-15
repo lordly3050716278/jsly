@@ -130,15 +130,15 @@ try {
 ### 字符串与对象命名转换
 
 ```javascript
-import { camelToSnake, snakeToCamel, toggleConvertCase, convertObjKeysToCamel } from 'jsly'
+import { camelToSnake, snakeToCamel, toggleConvertCase, convertKeys } from 'jsly'
 
 console.log(camelToSnake('myVariable')) // my_variable
 console.log(snakeToCamel('my_variable')) // myVariable
 console.log(toggleConvertCase('myVariable')) // my_variable
 console.log(toggleConvertCase('my_variable')) // myVariable
 
-const obj = { my_variable: 123, another_key: 'abc' }
-console.log(convertObjKeysToCamel(obj)) // { myVariable: 123, anotherKey: 'abc' }
+console.log(convertKeys({ user_name: 'Tom', user_info: { phone_number: '123' } }, 'camel')) // { userName: 'Tom', userInfo: { phoneNumber: '123' } }
+console.log(convertKeys({ userName: 'Tom', userInfo: { phoneNumber: '123' } }, 'snake')) // { userName: 'Tom', userInfo: { phoneNumber: '123' } }
 
 ```
 
