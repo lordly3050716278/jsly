@@ -195,3 +195,35 @@ $bus.off('test', listener)
 $bus.removeAllListeners()
 
 ```
+
+### 文本关键词高亮（highlightKeyword）
+高亮文本中匹配的关键词，支持不区分大小写匹配，并允许自定义标签与样式。
+
+```javascript
+import { highlightKeyword } from 'jsly'
+
+const text = '泡泡音乐是一款非常好用的音乐播放器'
+const result = highlightKeyword(text, '音乐')
+console.log(result)
+// => '泡泡<span style="background-color: #ff0;color: #001;">音乐</span>是一款非常好用的<span style="background-color: #ff0;color: #001;">音乐</span>播放器'
+
+```
+
+自定义标签与样式
+```javascript
+highlightKeyword('Hello World', 'world', {
+tag: 'mark',
+bgColor: '#000',
+color: '#0f0'
+})
+
+```
+
+配置说明
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|---------|------|
+| `text` | `string` | 必填 | 原始文本 |
+| `keyword` | `string` | 必填 | 要高亮的关键词（大小写不敏感） |
+| `config.tag` | `string` | `'span'` | 包裹关键词的标签名 |
+| `config.bgColor` | `string` | `'#ff0'` | 背景颜色 |
+| `config.color` | `string` | `'#001'` | 文本颜色 |
