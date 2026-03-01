@@ -227,3 +227,72 @@ color: '#0f0'
 | `config.tag` | `string` | `'span'` | 包裹关键词的标签名 |
 | `config.bgColor` | `string` | `'#ff0'` | 背景颜色 |
 | `config.color` | `string` | `'#001'` | 文本颜色 |
+
+### 基于 requestAnimationFrame 的定时器（rafInterval）
+使用 requestAnimationFrame 实现类似 setInterval 的效果。
+更适合动画、轮播、游戏循环等需要与浏览器帧同步的场景。
+
+```javascript
+import { rafInterval } from 'jsly'
+
+// 每秒执行一次
+const stop = rafInterval(() => {
+  console.log('tick')
+}, 1000)
+
+// 停止执行
+stop()
+```
+
+在 Vue 中使用
+
+```javascript
+import { rafInterval } from 'jsly'
+import { onMounted, onUnmounted } from 'vue'
+
+let stop
+
+onMounted(() => {
+  stop = rafInterval(() => {
+    console.log('frame update')
+  }, 16) // 约 60fps
+})
+
+onUnmounted(() => {
+  stop()
+})
+```
+
+### 基轮询函数（poll）
+用于按固定间隔重复执行任务，直到：
+- 返回结果为 truthy
+- 超时
+- 手动停止
+适用于接口状态查询、等待资源加载、检测条件成立等场景。
+
+```javascript
+import { poll } from 'jsly'
+
+// 轮询接口直到 ready === true
+const { promise, stop } = poll(
+  async () => {
+    const res = await fetch('/api/status').then(r => r.json())
+    return res.ready && res
+  },
+  {
+    interval: 2000, // 每 2 秒执行一次
+    timeout: 10000  // 10 秒超时
+  }
+)
+
+promise
+  .then(data => {
+    console.log('成功：', data)
+  })
+  .catch(err => {
+    console.error('轮询失败：', err)
+  })
+
+// 如需手动停止
+// stop()
+```
